@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Пример плиток с поиском</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #1e1e1e;
+            color: #ffffff;
+            font-family: Arial, sans-serif;
+            background-image: url('background.jpg');
+            background-size: cover;
+        }
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        .search-container {
+            display: flex;
+            margin-bottom: 40px;
+            align-items: center;
+            width: 100%;
+            height: 50px;
+            max-width: 800px;
+            background-color: #2A2A2C;
+            border-radius: 90px;
+            padding: 5px;
+        }
+
+        #searchInput {
+            padding: 20px;
+            outline: none;
+            border: none;
+            border-radius: 90px;
+            background-color: #2A2A2C;
+            color: #ffffff;
+            width: 100%;
+            height: 50px;
+            font-size: 20px;
+            transition: all 0.5s ease;
+        }
+
+        #searchInput:focus {
+            transition: all 0.5s ease;
+            background-color: #232325;
+        }
+
+        ::-webkit-search-cancel-button {
+            -webkit-appearance: none;
+            width: 25px;
+            background-color: #ffffff80;
+            /* Цвет, который вы хотите использовать */
+            -webkit-mask: url('x-lg.svg') no-repeat center;
+            mask: url('x-lg.svg') no-repeat center;
+            mask-size: contain;
+            height: 25px;
+        }
+
+        ::-webkit-search-cancel-button:hover {
+            background-color: #fff;
+        }
+
+        #searchButton {
+            height: 50px;
+            width: 110px;
+            border: none;
+            outline: none;
+            background-color: #F8604A;
+            color: white;
+            border-radius: 90px;
+            cursor: pointer;
+            display: none;
+            font-size: 15px;
+            margin-left: 10px;
+        }
+
+        .tiles {
+
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 10px;
+            width: 80%;
+        }
+        .tile {
+            color: #fff;
+            text-decoration: none;
+            background-color: #00000020;
+            backdrop-filter: blur(10px);
+            padding: 10px;
+            border-radius: 15px;
+            text-align: center;
+            cursor: pointer;
+            box-sizing: border-box;
+            transition: all 0.3s ease;
+        }
+
+        .empty {
+            background-color: #ffffff50;
+        }
+        .empty:hover {
+            background-color: #ffffff50;
+            scale: 1;
+        }
+        .img {
+            width: 100%;
+            box-sizing: border-box;
+        }
+        .tile img {
+            border-radius: 20px;
+            border: none;
+            height: 80px;
+            max-width: 150px;
+            background-size: center;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        .tile:hover {
+            background-color: #00000050;
+            scale: 1.05;
+        }
+
+        p {
+            margin: 0;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="search-container">
+            <input type="search" id="searchInput" placeholder="Поиск...">
+            <button id="searchButton">Найти</button>
+        </div>
+
+        <div class="tiles">
+            <a class="tile" href="https://ya.ru/">
+                <div class="img">
+                    <img src="https://avatars.mds.yandex.net/get-lpc/1520633/ef2a27b6-800c-4a83-a864-192193c41b38/orig">
+                </div>
+                <p>
+                    Яндекс
+                </p>
+            </a>
+            <a class="tile" href="https://youtube.com">
+                <div class="img">
+                    <img src="https://www.eduportal44.ru/npo/Pl-4/SiteAssets/SitePages/%D0%97%D0%B8%D0%BC%D0%BD%D1%8F%D1%8F%20%D0%BF%D1%80%D0%BE%D1%84%D0%BE%D1%80%D0%B8%D0%B5%D0%BD%D1%82%D0%B0%D1%86%D0%B8%D0%BE%D0%BD%D0%BD%D0%B0%D1%8F%20%D1%88%D0%BA%D0%BE%D0%BB%D0%B0%20-%20%D0%BE%D0%BD%D0%BB%D0%B0%D0%B9%D0%BD/YouTube-Emblem-e1601590121234.png">
+                </div>
+                <p>
+                    YouTube
+                </p>
+            </a>
+            <a class="tile" href="https://vk.com">
+                <div class="img">
+                    <img src="https://www.mgutu-vf.ru/img/vk_1.png">
+                </div>
+                <p>
+                    ВКонтакте
+                </p>
+            </a>
+            <a class="tile" href="https://web.telegram.org">
+                <div class="img">
+                    <img src="https://scout-gps.ru/upload/medialibrary/f81/18s97bjkbzf46qrxta5jdg4jo7j9pond/telegram-2019-logo.svg">
+                </div>
+                <p>
+                    Telegram
+                </p>
+            </a>
+            <a class="tile" href="https://discord.com">
+                <div class="img">
+                    <img src="https://i.imgur.com/YINIG53.png">
+                </div>
+                <p>
+                    Discord
+                </p>
+            </a>
+            <a href="https://store.steampowered.com/" class="tile">
+                <div class="img">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/Steam_icon_logo.svg/1024px-Steam_icon_logo.svg.png">
+                </div>
+                <p>
+                    Steam
+                </p>
+            </a>
+            <a href="https://github.com" class="tile">
+                <div class="img">
+                    <img src="https://gitlab.com/uploads/-/system/group/avatar/10532272/github.png">
+                </div>
+                <p>
+                    GitHub
+                </p>
+            </a>
+            <a href="https://malinovka.org/" class="tile">
+                <div class="img">
+                    <img src="https://i.imgur.com/GGrLy8q.png">
+                </div>
+                <p>
+                    Малиновка
+                </p>
+            </a>
+            <a href="https://www.kinopoisk.ru/" class="tile">
+                <div class="img">
+                    <img src="https://st.peopletalk.ru/wp-content/uploads/2023/02/channels4_profile.jpg">
+                </div>
+                <p>
+                    Кинопоиск
+                </p>
+            </a>
+            <a class="tile empty">
+                <div class="img">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/5/59/Empty.png">
+                </div>
+                <p>
+
+                </p>
+            </a>
+            <a class="tile empty">
+                <div class="img">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/5/59/Empty.png">
+                </div>
+                <p>
+
+                </p>
+            </a>
+            <a class="tile empty">
+                <div class="img">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/5/59/Empty.png">
+                </div>
+                <p>
+
+                </p>
+            </a>
+        </div>
+    </div>
+
+    <script>
+        const searchInput = document.getElementById('searchInput');
+        const searchButton = document.getElementById('searchButton');
+
+        searchInput.addEventListener('input', function() {
+            if (searchInput.value.trim()) {
+                searchButton.style.display = 'block';
+            } else {
+                searchButton.style.display = 'none';
+            }
+        });
+
+        clearButton.addEventListener('click', function() {
+            searchInput.value = ''; // Очищаем поле ввода
+            searchButton.style.display = 'none'; // Скрываем кнопку поиска
+            clearButton.style.display = 'none'; // Скрываем кнопку очистки
+            searchInput.focus(); // Возвращаем фокус на поле ввода
+        });
+
+        searchButton.addEventListener('click', function() {
+            const query = searchInput.value.trim();
+            if (query) {
+                // Перенаправление на страницу поиска Яндекса
+                window.location.href = 'https://ya.ru/search/?text=' + encodeURIComponent(query);
+            }
+        });
+    </script>
+
+</body>
+</html>
