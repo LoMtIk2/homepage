@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
     <title>Пример плиток с поиском</title>
     <style>
         body {
@@ -29,9 +30,9 @@
             width: 100%;
             height: 50px;
             max-width: 800px;
-            background-color: #2A2A2C;
+            background-color: #00000050;
             border-radius: 90px;
-            padding: 5px;
+            padding: 5px 10px;
         }
 
         #searchInput {
@@ -39,7 +40,7 @@
             outline: none;
             border: none;
             border-radius: 90px;
-            background-color: #2A2A2C;
+            background-color: #2A2A2C00;
             color: #ffffff;
             width: 100%;
             height: 50px;
@@ -49,14 +50,15 @@
 
         #searchInput:focus {
             transition: all 0.5s ease;
-            background-color: #232325;
+            /*background-color: #00000020;*/
+            font-size: 25px;
+            height: 55px;
         }
 
         ::-webkit-search-cancel-button {
             -webkit-appearance: none;
             width: 25px;
             background-color: #ffffff80;
-            /* Цвет, который вы хотите использовать */
             -webkit-mask: url('x-lg.svg') no-repeat center;
             mask: url('x-lg.svg') no-repeat center;
             mask-size: contain;
@@ -68,8 +70,8 @@
         }
 
         #searchButton {
-            height: 50px;
-            width: 110px;
+            height: 45px;
+            width: 100px;
             border: none;
             outline: none;
             background-color: #F8604A;
@@ -79,6 +81,11 @@
             display: none;
             font-size: 15px;
             margin-left: 10px;
+            transition: all 0.3s ease;
+        }
+
+        #searchButton:hover {
+            background-color: #ff3d1f;
         }
 
         .tiles {
@@ -252,20 +259,13 @@
             }
         });
 
-        clearButton.addEventListener('click', function() {
-            searchInput.value = ''; // Очищаем поле ввода
-            searchButton.style.display = 'none'; // Скрываем кнопку поиска
-            clearButton.style.display = 'none'; // Скрываем кнопку очистки
-            searchInput.focus(); // Возвращаем фокус на поле ввода
+        document.addEventListener('DOMContentLoaded', function() {
+            searchButton.addEventListener('click', function() {
+                const query = searchInput.value.trim();
+                window.location.href = 'https://ya.ru/search/?text=' + encodeURIComponent(query);
+            });
         });
 
-        searchButton.addEventListener('click', function() {
-            const query = searchInput.value.trim();
-            if (query) {
-                // Перенаправление на страницу поиска Яндекса
-                window.location.href = 'https://ya.ru/search/?text=' + encodeURIComponent(query);
-            }
-        });
     </script>
 
 </body>
